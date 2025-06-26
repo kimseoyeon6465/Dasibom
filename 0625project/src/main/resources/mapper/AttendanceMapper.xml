@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.booksajo.dasibom.service.dao.AttendanceDAO">
+
+ 	<!-- 오늘 출석 여부 확인 -->
+
+    <select id="countByDate" resultType="int">
+        SELECT COUNT(*)
+        FROM attendance_table
+        WHERE user_id = 'user01'
+        AND attend_date = TRUNC(SYSDATE)
+    </select>
+
+    <!-- 출석 기록 저장 -->
+	<insert id="insertAttendance">
+        INSERT INTO attendance_table (user_Id, attend_date)
+        VALUES (#{user_Id}, TRUNC(SYSDATE))
+    </insert>
+
+    <!-- 이번 달 총 출석일수 -->
+	<select id="countAttendanceThisMonth" resultType="int">
+        SELECT COUNT(*)
+        FROM attendance_table
+        WHERE user_id = 'user01'
+        AND TO_CHAR(attend_date, 'YYYYMM') = TO_CHAR(SYSDATE, 'YYYYMM')
+    </select>
+
+
+    <!-- 출석 기록 리셋 -->
+	<delete id="resetAttendance">
+        DELETE FROM attendance_table
+        WHERE 
+            WHERE user_id = 'user01'
+        AND TO_CHAR(attend_date, 'YYYYMM') = TO_CHAR(SYSDATE, 'YYYYMM')
+    </delete>
+    
+    <!-- 7월 이후도 나오는 출석 캘린더용 -->
+    <select id="getAttendanceDates" resultType="java.util.Date">
+	    SELECT attend_date
+	    FROM attendance_table
+	    WHERE user_id = 'user01'
+	    AND TO_CHAR(attend_date, 'YYYYMM') = TO_CHAR(TO_DATE(#{year} || LPAD(#{month}, 2, '0'), 'YYYYMM'), 'YYYYMM')
+	</select>
+
+    
+
+</mapper>

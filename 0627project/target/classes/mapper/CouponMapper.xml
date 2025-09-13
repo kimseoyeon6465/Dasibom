@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.booksajo.dasibom.service.dao.CouponDAO">
+
+	<!-- 쿠폰 발급 -->
+	<insert id="insertCoupon" parameterType="CouponVO">
+	    INSERT INTO coupon_table (
+	        coupon_id,
+	        user_id,
+	        coupon_irum
+	        
+	    )
+	    VALUES (
+	        coupon_seq.NEXTVAL,
+	        'user01',
+	        'user0112'
+	    )
+	</insert>
+
+    <!-- 내 쿠폰 목록 -->
+    
+    <select id="getUserCoupons" resultType="CouponVO">
+        SELECT *
+        FROM coupon_table
+        WHERE user_id = #{user_Id}
+        AND used = 'N'
+        ORDER BY issue_date DESC
+    </select>
+
+    <!-- 쿠폰 사용 처리 -->
+    <update id="updateCouponUsed">
+        UPDATE coupon_table
+        SET used = 'Y'
+        WHERE coupon_id = #{coupon_Id}
+    </update>
+
+</mapper>

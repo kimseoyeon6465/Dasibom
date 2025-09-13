@@ -1,0 +1,612 @@
+@charset "UTF-8";
+
+.cart-header-box {
+  padding: 20px 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cart-header-box h1 {
+  font-size: 25px; /* cartAll.jsp의 best-text처럼 작은 사이즈 */
+  margin: 0;
+  padding-left: 8px;
+}
+
+/* 제목, 정보 간격 조절 */
+.cart-header-section {
+  margin-bottom: 30px;
+}
+
+.best-text {
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+  font-size: 22px;
+  margin: 15px 0 10px 0;
+  padding-left: 8px;
+  color: #333;
+
+}
+
+
+/* 진한 밑줄 효과 */
+.underline {
+  width: 100%;
+  height: 2px;
+  background-color: #333;  /* 기존 #ccc → 더 진하게 */
+  margin: 4px 0 20px 0;
+}
+
+
+
+.order-info {
+   flex: 1;
+   min-width: 300px;
+}
+
+.request-info {
+   flex: 1;
+   min-width: 300px;
+}
+
+.request-info textarea {
+   width: 100%;
+   padding: 10px;
+   font-size: 14px;
+   border: 1px solid #ccc;
+   border-radius: 4px;
+   resize: vertical;
+}
+
+.order-summary-container {
+   margin-top: -150px;   /* 위로 20px 이동 */
+     margin-left: 250px;   /* 오른쪽으로 30px 이동 */
+     width: 1200px; /* 기존보다 넓게 */
+     margin: -150px auto 0 auto; /* 중앙정렬 유지 */
+ 
+}
+
+
+.request-box textarea {
+   width: 25%;
+   resize: none; /* 리사이즈 막기 */
+   max-height: 80px;
+   min-height: 80px;
+   font-size: 14px;
+   padding: 8px;
+   box-sizing: border-box;
+   border-radius: 5px;
+   border: 1px solid #ccc;
+}
+
+.button-container {
+   text-align: center;
+   margin-top: 30px;
+}
+
+.button-container button {
+   font-size: 18px;
+   padding: 15px 40px;
+   background-color: #ffb6c1;
+   color: white;
+   border: none;
+   border-radius: 10px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+
+.button-container button:hover {
+   background-color: #ff8fa3;
+}
+.price-line {
+   display: flex;
+   justify-content: space-between;
+   margin: 5px 0;
+}
+
+.price-line .label {
+   font-weight: bold;
+}
+
+.price-line .value {
+   text-align: right;
+}
+.final-line {
+   display: flex;
+   justify-content: space-between;
+   font-size: 18px;
+   font-weight: bold;
+   margin-top: 15px;
+}
+.discount {
+   color: red;
+}
+.divider {
+   border: none;
+   border-top: 1px dashed #ccc;
+   margin: 10px 0;
+}
+
+/* update 수정 */
+/* ✅ payment.jsp 전용 결제 요약 스타일 */
+.payment-summary-box {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-top: 43px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 100px;
+}
+
+/* 항목 줄 정렬 (상품 금액 ~ 포인트 사용) //////////////////////////////*/
+.payment-summary-box .price-line,
+.payment-summary-box .final-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.payment-summary-box .final-line {
+  font-weight: bold;
+  font-size: 17px;
+  border-top: 1px solid #ddd;
+  padding-top: 12px;
+}
+
+/* 구분선 */
+.payment-summary-box .divider,
+.payment-summary-box hr {
+  border: none;
+  border-top: 1px dashed #ccc;
+  margin: 10px 0;
+}
+
+/* 인풋 */
+.payment-summary-box input[type="number"] {
+  width: 100%;
+  margin-top: 5px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* 포인트 적용 버튼 */
+.payment-summary-box button:nth-of-type(1) {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #fba2b5, #ec6792);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.payment-summary-box button:nth-of-type(1):hover {
+  background-color: #d85d85;
+}
+
+/* 결제하기 버튼 (마지막 버튼) */
+.payment-summary-box button:last-of-type {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px 0;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ec6792, #d24c7d);
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.payment-summary-box button:last-of-type:hover {
+  background-color: #c04370;
+}
+
+/* 할인 글씨 강조 */
+.payment-summary-box .discount {
+  color: #d6002f;
+  font-weight: bold;
+}
+
+/* 포인트 안내 문구 */
+.payment-summary-box p#expectedPoint {
+  font-size: 13px;
+  color: #666;
+  margin-top: 10px;
+}
+/*  ////////////////////////////////////////////*/
+
+
+.summary-box {
+  flex: 1;
+  max-width: 320px;  /* 원하는 가로 크기, 예: 320px */
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  font-size: 16px;
+/*   line-height: 1.8; */
+/*   margin-top: 43px; */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 100px;              /* 화면 상단으로부터 100px 거리까지 sticky */
+  
+  /* 추가 */
+/* 
+  margin-left: auto;
+  margin-right: auto; */
+  
+}
+
+/* 항목 간 정렬 */
+.summary-box .price-line,
+.summary-box .final-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.summary-box .final-line {
+  font-weight: bold;
+  font-size: 17px;
+  border-top: 1px solid #ddd;
+  padding-top: 12px;
+}
+
+/* 구분선 */
+.summary-box .divider,
+.summary-box hr {
+  border: none;
+  border-top: 1px dashed #ccc;
+  margin: 10px 0;
+}
+
+/* 포인트 입력 인풋 */
+.summary-box input[type="number"] {
+  width: 100%;
+  margin-top: 5px;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box;
+}
+
+/* 버튼 공통 스타일 */
+.summary-box button {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+/* 포인트 적용 버튼 */
+.summary-box button:nth-of-type(1) {
+  background: linear-gradient(135deg, #fba2b5, #ec6792);
+}
+
+/* 주문하기 버튼 */
+.summary-box button:last-of-type {
+  background: linear-gradient(135deg, #ec6792, #d24c7d);
+}
+
+/* 버튼 hover */
+.summary-box button:hover {
+  background-color: #4a2093;
+}
+
+/* 할인 글씨 강조 */
+.summary-box .discount {
+  color: #d6002f;
+  font-weight: bold;
+}
+
+/* 적립 포인트 안내문구 */
+.summary-box p#expectedPoint {
+  font-size: 13px;
+  color: #666;
+  margin-top: 10px;
+}
+
+
+/* 주문자 정보 박스 */
+.order-info-box {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto 30px auto;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    /* 수정: 왼쪽으로 50px 옮기고 싶을 때 */
+  margin-left: 150px;
+  margin-right: auto;
+  
+}
+
+/* 헤더 */
+.order-info-header h2 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* 각 정보 행 */
+.order-info-content .info-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* 항목명 */
+.order-info-content .info-label {
+  width: 120px;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+}
+
+/* 내용 */
+.order-info-content .info-value {
+  flex: 1;
+  text-align: left;
+  color: #555;
+}
+
+/* 요청사항 박스 */
+.order-info-box .request-box {
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+} 
+
+
+.order-info-box .request-box .info-label {
+  width: 120px;
+  font-weight: bold;
+  color: #333;
+  text-align: left;
+  margin-top: 8px;
+}
+
+.order-info-box .request-box textarea {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  resize: none;
+  min-height: 80px;
+  box-sizing: border-box;
+}
+
+.order-info-flex {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap; /* 작은 화면 대응 */
+  margin-bottom: 20px;
+}
+
+.info-title {
+  width: 120px;
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  margin-right: 20px;
+  line-height: 1.5;
+}
+
+.info-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.detail-label {
+  width: 100px;
+  font-weight: bold;
+  color: #333;
+}
+
+.detail-value {
+  flex: 1;
+  color: #555;
+}
+
+.payment-container {
+  flex: 2;
+  max-width: 750px;
+}
+
+/* 배송지 정보 너비 */
+.payment-container .order-info-box {
+  flex: 2;
+  max-width: 750px;
+}
+
+/* 결제 요약 박스는 sticky가 가능 */
+.payment-container .summary-box {
+  flex: 1;
+  max-width: 320px;
+  position: sticky;
+  top: 100px;  /* 스크롤 시 화면 위에서부터의 거리 */
+}
+
+
+.payment-layout {
+  display: flex;
+  flex-direction: column;   /* 배송지+요약 행, 주문목록을 세로로 배치 */
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.payment-content-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.product-list-wrapper {
+  max-width: 590px;
+   margin: -150px 0 0 150px;  /* 위로 20px 올리고, 왼쪽으로 150px 이동 */
+}
+
+.cart-item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 30px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+
+
+.book-image {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+
+.discount-rate {
+  color: green;
+  font-weight: bold;
+}
+
+.discounted-price {
+  color: #e60039;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.original-price {
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+
+
+.item-total-price {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.book-count {
+  font-size: 16px;
+}
+
+
+.discounted-price {
+  color: #e60039;
+  font-weight: bold;
+  margin-right: 8px;
+}
+
+.original-price {
+  color: #aaa;
+  text-decoration: line-through;
+  font-size: 14px;
+}
+
+
+.cart-item-card {
+  display: flex;
+  align-items: center;       /* 세로축 중앙정렬 */
+  justify-content: space-between; /* 요소 간격 자동 배분 */
+  gap: 20px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.book-image {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+.item-info {
+  flex: 2;  /* 제목 영역 넓게 */
+  font-weight: bold;
+  color: #000;
+  word-break: keep-all;
+}
+
+.item-quantity {
+  flex: 0.5;
+  text-align: center;
+  font-weight: bold;
+  color: #000;
+}
+
+.item-price {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.discounted-price {
+  color: #e60039;
+  font-weight: bold;
+}
+
+.original-price {
+  color: #aaa;
+  text-decoration: line-through;
+  font-size: 14px;
+}
+
+
+
+.highlight-point {
+  color: #ec6792; /* 분홍색 톤 (벚꽃 느낌) */
+  font-weight: bold;
+}
+
+
+
+

@@ -1,3 +1,0 @@
-<%
-    session.setAttribute("cartStatus", "added");
-%>

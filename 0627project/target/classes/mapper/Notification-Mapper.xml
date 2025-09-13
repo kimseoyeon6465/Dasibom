@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.booksajo.dasibom.service.dao.PostsDAO">
+
+	<!-- 공지 카테고리 게시글 개수 -->
+	<select id="getNotificationPostCount" resultType="int">
+		SELECT COUNT(*) FROM community_table WHERE category = '공지'
+	</select>
+
+	<select id="searchNotificationPostsByKeywordPaged" parameterType="map" resultType="PostsVO">
+		SELECT * FROM (
+		SELECT ROWNUM AS rn, a.* FROM (
+		SELECT * FROM community_table
+		WHERE category = '공지'
+		AND (title LIKE '%' || #{keyword} || '%' OR content LIKE '%' || #{keyword} || '%')
+		ORDER BY post_date DESC
+		) a
+		WHERE ROWNUM &lt;= #{endIndex}
+		)
+		WHERE rn &gt; #{startIndex}
+	</select>
+
+	<select id="getSearchNotificationPostCount" resultType="int">
+		SELECT COUNT(*)
+		FROM community_table
+		WHERE category = '공지'
+		AND (title LIKE '%' || #{keyword} || '%' OR content LIKE '%' || #{keyword} || '%')
+	</select>
+
+</mapper>
+ 

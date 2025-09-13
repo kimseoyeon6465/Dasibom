@@ -1,0 +1,95 @@
+@charset "UTF-8";
+	
+	
+	
+	.attendance-wrapper {
+	    max-width: 800px;
+	    margin: 40px auto;
+	    padding: 20px;
+	}
+	
+	.attendance-header h2 {
+	    font-size: 24px;
+	    font-weight: bold;
+	    margin-bottom: 8px;
+	    text-align: center;
+	}
+	
+	.attendance-sub {
+	    font-size: 14px;
+	    color: #666;
+	    margin-bottom: 20px;
+	    text-align: center;
+	}
+	
+	.attendance-calendar {
+	    width: 100%;
+	    overflow-x: auto;   /* 혹시 모바일 대응 */
+	    overflow-y: visible;  /* y 방향 짤림 방지 */
+	}
+	
+	
+	.attendance-calendar table {
+	    width: 100%;
+	    border-collapse: collapse;
+	}
+	
+	.attendance-calendar th,
+	.attendance-calendar td {
+	    padding: 10px;
+	    text-align: center;
+	    vertical-align: middle;
+	}
+	
+	.day-circle {
+	    width: 64px;          /* 기존 48 → 64로 키움 */
+	    height: 64px;
+	    line-height: 64px;
+	    border-radius: 50%;
+	    border: 2px dashed #ec6792;
+	    display: inline-block;
+	    font-weight: bold;
+	    color: #333;
+	    margin: 8px auto;      /* margin 5에서 8로 살짝 조정 */
+	    font-size: 16px;       /* 날짜 숫자도 약간 키움 */
+	}
+	
+	.day-circle.today-checked {
+	    background: url('../IMG/stamp.png') no-repeat center center;
+	    background-size: contain;   /* 보통 contain 추천 */
+	    /* color: transparent;  ← 날짜를 안보이게 하고 싶으면! */
+	}
+	
+	.day-circle.past-checked {
+    background: url('../IMG/stamp.png') no-repeat center center;
+    background-size: contain;
+    opacity: 0.4;   /* 이전 출석 도장은 흐릿하게 */
+	}
+	
+	.attendance-btn {
+	    display: block;
+	    margin: 30px auto 10px auto; /* 위 아래 여백 조정 */
+	     padding: 10px 20px;
+	    font-size: 16px;
+	    font-weight: bold;
+	    color: white;
+	    background-color: #a883f5;
+	    border: none;
+	    border-radius: 8px;
+	    cursor: pointer;
+	}
+	
+	.attendance-btn:hover {
+	    background-color: #a078f2;
+	}
+	
+	
+	
+	/* 도장 */
+	
+	.day-circle.checked {
+	    background: url('../IMG/stamp.png') no-repeat center center;
+	    background-size: cover;
+	    color: transparent;
+	}
+	

@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+
+.attendance-info-box {
+    margin-top: 40px;
+    padding: 20px;
+    border: 1px solid #eee;
+    background: #fffdf8;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #333;
+    border-radius: 10px;
+}
+
+.attendance-info-box h3 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    color: #d64571;
+    font-weight: bold;
+}
+
+.attendance-info-box h4 {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #d64571;
+    font-weight: bold;
+}
+
+.attendance-info-box ul {
+    margin-left: 20px;
+    padding-left: 10px;
+}
+
+.attendance-info-box ul li {
+    margin-bottom: 8px;
+    list-style: disc;
+    color: #333; /* 리스트 항목은 일반 글씨 유지 */
+}
+
+.attendance-info-box p {
+    margin-top: 20px;
+    color: #d64571;
+    font-weight: bold;
+    text-align: center;
+}
+

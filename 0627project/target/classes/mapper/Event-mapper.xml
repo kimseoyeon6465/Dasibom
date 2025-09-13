@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.booksajo.dasibom.service.dao.EventDAO">
+
+    
+    <select id="getOneevent" resultType="com.booksajo.dasibom.vo.EventVO">
+        SELECT event_id, title, subtitle, description, image_path, start_date, end_date, reg_date
+        FROM event_table
+        WHERE event_id = #{event_Id}
+    </select>
+
+	<select id="getAllEvent" resultType="com.booksajo.dasibom.vo.EventVO">
+		SELECT event_id, title, subtitle, description, image_path, start_date, end_date, reg_date
+        FROM event_table
+	</select>
+	
+	<!-- 이벤트 게시글 총 개수 -->
+<select id="getEventPostCount" resultType="int">
+	SELECT COUNT(*) FROM community_table WHERE category = '이벤트'
+</select>
+
+<!-- 전체 게시글 페이징 (post_id 내림차순) -->
+<select id="getAllContents" resultType="PostsVO" parameterType="map">
+	SELECT * FROM (
+	SELECT ROWNUM AS rnum, inner_query.* FROM (
+	SELECT * FROM community_table ORDER BY post_id DESC
+	) inner_query
+	WHERE ROWNUM &lt;= #{endRow}
+	)
+	WHERE rnum &gt;= #{startRow}
+</select>
+
+<!-- 이벤트 게시글 키워드 검색 + 페이징 -->
+<select id="searchEventPostsByKeywordPaged" parameterType="map" resultType="PostsVO">
+	SELECT * FROM (
+	SELECT ROWNUM AS rn, a.* FROM (
+	SELECT * FROM community_table
+	WHERE category = '이벤트'
+	AND (title LIKE '%' || #{keyword} || '%' OR content LIKE '%' || #{keyword} || '%')
+	ORDER BY post_date DESC
+	) a
+	WHERE ROWNUM &lt;= #{endRow}
+	)
+	WHERE rn &gt;= #{startRow}
+</select>
+
+<!-- 이벤트 게시글 키워드 검색 결과 개수 -->
+<select id="getSearchEventPostCount" parameterType="map" resultType="int">
+	SELECT COUNT(*)
+	FROM community_table
+	WHERE category = '이벤트'
+	AND (title LIKE '%' || #{keyword} || '%' OR content LIKE '%' || #{keyword} || '%')
+</select>
+
+<!-- 특정 카테고리 게시글 개수 -->
+<select id="countPostsByCategory" parameterType="string" resultType="int">
+	SELECT COUNT(*)
+	FROM community_table
+	WHERE category = #{category}
+</select>
+
+
+
+
+</mapper>

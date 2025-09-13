@@ -1,0 +1,521 @@
+@charset "UTF-8";
+
+/* 본문 전체 감싸는 wrapper */
+/* 본문 확대는 cartAll.jsp 에서만 */
+
+.cart-info-section {
+  margin-top: 300px; /* 필요 시 값 조정 가능 */
+}
+
+.cart-header-box {
+  padding: 20px 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.best-text {
+  width: 100%;
+  text-align: left;
+  font-weight: bold;
+  font-size: 22px;
+  margin: 15px 0 10px 0;
+  padding-left: 8px;
+  color: #333;
+/*   margin-bottom: 10px;*/ 
+/*   margin-left: -10px; */  /* ← 왼쪽으로 삐져나오게 */
+/*   padding-left: 10px; */  /* 안쪽 여백으로 내용 밀어주기 (균형) */
+}
+
+/* 진한 밑줄 효과 */
+.underline {
+  width: 100%;
+  height: 2px;
+  background-color: #333;  /* 기존 #ccc → 더 진하게 */
+  margin: 4px 0 20px 0;
+}
+
+
+.cart-page body {
+	font-family: Arial, sans-serif;
+	text-align: center;
+	margin: 20px;
+}
+
+.cart-page h1 {
+	text-align: left;
+	margin-left: 0px;       /* 0으로 변경 */
+	padding-left: 10px;     /* 메인 페이지와 비슷하게 균형 잡힌 패딩 */
+	font-size: 28px;
+}
+
+.cart-page table {
+	width: 90%;
+	margin: 0 auto;
+	border-collapse: collapse;
+}
+
+.cart-page th, .cart-page td {
+	border: 1px solid #ccc;
+	padding: 10px;
+	text-align: center;
+}
+
+.cart-page p {
+	font-size: 16px;
+}
+
+/* ✅ 가격 스타일 */
+/* .cart-page .original-price {
+  text-decoration: line-through;
+  color: #999;
+  margin-right: 6px;
+} */
+
+.original-price {
+  color: #aaa;
+  text-decoration: line-through;
+}
+/* 
+.right-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+  width: 120px;
+  
+    추가
+  justify-content: center;
+  height: 100%;  높이를 카드에 맞게 지정
+  min-height: 120px;         수직 가운데 보장용 추가
+   padding-top: 10px; 이 부분을 조정해보세요
+}
+  
+
+.item-total-price {
+  font-size: 18px;	오른쪽 가격 글씨크기
+  font-weight: bold;
+}
+ */
+ 
+/* 수량과 가격을 더 조밀하게 수직 정렬 */
+.right-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ← 중앙 정렬 */
+  justify-content: center;
+  gap: 6px;             /* 간격 최소화 */
+  padding: 0 10px;
+  min-width: 80px;
+}
+
+/* 가격 스타일 - 크고 간결하게 */
+.item-total-price {
+  font-size: 17px;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;  /* 간격 제거 */
+}
+
+/* 수량 조절 컨테이너 */
+.quantity-control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+
+
+/* ✅ 수량 숫자 */
+.book-count {
+  font-size: 15px;
+  font-weight: bold;
+  min-width: 20px;
+  text-align: center;
+}
+
+
+
+.cart-page .discounted-price {
+  color: #d6002f;
+  font-weight: bold;
+}
+
+.cart-page .cart-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	/* width: 100%; */
+	max-width: 1200px;      /* 메인 페이지와 동일하게 고정 너비 */
+	margin: 0 auto;
+	gap: 40px;
+	padding: 10px;
+}
+
+/* 책 정보 칸(카드 전체) 너비 줄이기 3 → 2 */
+.cart-page .cart-items {
+	flex: 3;  
+}
+
+/*   결제 관련창이 스크롤해도 따라오게 */
+
+.cart-page .summary-box {
+	flex: 1;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 20px;
+	background-color: #f9f9f9;
+	font-size: 16px;
+	
+	/*결제창이랑 글씨랑 위치 맞추기 */
+  margin-top: 43px;  /* 예시값. 상황 맞게 조정 필요 */
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  
+    /* ✅ 고정 스크롤 효과 추가 */
+  position: sticky;
+  top: 100px;
+  
+}
+
+/* 항목 간 수평 정렬 */
+.cart-page .price-line,
+.cart-page .final-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.cart-page .final-line {
+  font-weight: bold;
+  font-size: 17px;
+  border-top: 1px solid #ddd;
+  padding-top: 12px;
+}
+
+/* 구분선 스타일 */
+.cart-page .divider {
+  border: none;
+  border-top: 1px dashed #ccc;
+  margin: 10px 0;
+}
+
+/* 책 이미지 */
+.cart-page .book-image {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* 텍스트 정렬 */
+.cart-page .book-info {
+  flex: 1;
+  text-align: left;
+}
+
+.cart-page .book-info p {
+  margin: 6px 0;
+  font-size: 15px;
+}
+
+.cart-page .price-wrapper {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* ✅ 수량 조절 버튼 */
+.cart-page .decrease-btn,
+.cart-page .increase-btn {
+  background-color: #f4f4f4;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.cart-page .decrease-btn:hover,
+.cart-page .increase-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.decrease-btn,
+.increase-btn {
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  background: #f8f8f8;
+  border-radius: 4px;
+  cursor: pointer;
+}
+ 
+/* 전체선택 체크박스 */
+.cart-page #selectAll {
+  transform: scale(1.2);	/* 체크박스 동그라미 크기 (전체선택) */
+  margin: 10px 0 15px 3px;
+}
+
+/* .cart-item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  background: #fff;
+} */
+
+.cart-item-card .right-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-top: 12px; /* 이 값은 조정해보면서 맞춰주세요 */
+}
+
+.right-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  margin-top: 12px;
+}
+
+.item-total-price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  margin-top: 6px;  /* ✨ 이 값으로 수직 정렬 조정 */
+}
+
+.cart-item-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start; /* 기본값 유지 */
+  position: relative;
+}
+
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 1;
+}
+
+.right-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;  /* 위로 붙이기 */
+  margin-top: 12px;             /* 높이 미세 조정 */
+}
+
+
+
+/* 추가 범위 한정 */
+/* ✅ 상품 카드 */
+.cart-page .cart-item-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.cart-page .cart-item-card input[type="checkbox"] {
+	transform: scale(1.5);
+}
+
+.cart-page .wishlist_item img {
+  width: 120px;        /* 원하는 너비 */
+  height: 160px;       /* 원하는 높이 */
+  object-fit: cover;   /* 이미지 비율 유지하며 박스 채우기 */
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+ 
+}
+
+
+
+/* ✅ 버튼 스타일 */
+.cart-page .summary-box button {
+  width: 100%;
+  padding: 10px 0;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  background: linear-gradient(135deg, #fba2b5, #ec6792);
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+   transition: all 0.2s ease;
+}
+
+/* 포인트 적용 버튼 */
+.cart-page .summary-box button:nth-of-type(1) {
+  background: linear-gradient(135deg, #fba2b5, #ec6792);
+}
+
+/* 선택 항목 삭제 버튼 */
+.cart-page .summary-box button:nth-of-type(2) {
+  background: linear-gradient(135deg, #f89aa9, #e3557e);
+}
+
+/* 보관함 이동 버튼 */
+.cart-page .summary-box button:nth-of-type(3) {
+  background: linear-gradient(135deg, #f28598, #d84a6a);
+}
+
+/* 주문하기 버튼 */
+.cart-page .summary-box button:nth-of-type(4) {
+  background: linear-gradient(135deg, #ec6792, #d24c7d);
+}
+
+
+.cart-page .summary-box button:hover {
+  background-color: #4a2093;
+}
+
+/* 체크박스 스타일 */
+.cart-page input[type="checkbox"] {
+  appearance: none; /* 기본 체크박스 제거 */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #ccc;
+  border-radius: 50%; /* 동그라미 */
+  background-color: #fff;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* 체크된 경우 스타일 */
+.cart-page input[type="checkbox"]:checked {
+  background-color: #ec6792;
+  border-color: #ec6792;
+}
+
+/* 체크 표시 (가상 요소로 체크마크 느낌) */
+.cart-page input[type="checkbox"]::after {
+  content: '';
+  position: absolute;
+  top: 50%; /* 정중앙 기준 */        /* ⬅ 원래 4px → 3px으로 올림 */
+  left: 50%;       /* ⬅ 원래 7px → 6px으로 조금 왼쪽으로 */
+  width: 6px;
+  height: 10px;
+  border: solid #fff;
+  border-width: 0 2px 2px 0;
+  transform: translate(-50%, -50%) rotate(45deg); /* 가운데 정렬 + 체크마크 회전 */
+  opacity: 0;
+}
+
+/* 체크된 경우 체크마크 보이기 */
+.cart-page input[type="checkbox"]:checked::after {
+  opacity: 1;
+}
+
+
+	.book-details {
+	  display: flex;
+	  flex-direction: column;
+	  gap: 6px;
+	}
+	
+	
+	.book-title {
+	  font-size: 18px; /* 왼쪽 책 제목 폰트 */
+	  font-weight: bold; 
+	}
+
+.book-price-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px; /* 할인율, 할인가, 정가(왼쪽) */
+}
+
+.discount-rate {
+  color: green;
+  font-weight: bold;
+}
+
+
+/* .quantity-control button {
+  width: 34px;
+  height: 34px; ✨ 동일하게 맞추기
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+}
+
+ */
+/* 수량 조절 버튼 전체 스타일 (더 깔끔하고 통일되게) */
+.quantity-control button {
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  padding: 0;
+  /* border: 1px solid #ccc;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.quantity-control button:hover {
+  background-color: #e0e0e0;
+}
+
+/* 배송안내 */
+.delivery-info-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+   /* 위치 조정 */
+  margin: -15px auto 20px auto;  /* 위로 살짝 올리고(-크기 더 키우면됨) , 가운데로 정렬 */
+  padding-left: 10px;            /* 제목과 좌측 패딩 맞춤 */
+  font-size: 15px;
+  color: #444;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #eee;
+  max-width: 1200px;             /* 제목과 같은 폭 */
+}
+
+.delivery-icon {
+  font-size: 18px;
+}
+
+/* 할인 금액만 글씨색 넣기 */
+.cart-page .summary-box .discount {
+  color: #d6002f;  /* 빨간색 */
+  font-weight: bold;
+}
+
+.h1h1 {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 10px;
+  margin-left: -110px;  /* ← 왼쪽으로 삐져나오게 */
+  padding-left: 10px;  /* 안쪽 여백으로 내용 밀어주기 (균형) */
+}

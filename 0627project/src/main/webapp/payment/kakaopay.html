@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>카카오페이 결제</title>
+<script src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
+<link rel="stylesheet" href="/dasibom/CSS/kakaopay.css">
+
+</head>
+<body>
+	<h1>카카오페이로 결제</h1>
+	<button id="kyulje">테스트 결제하기</button>
+
+	<script>
+    document.getElementById('kyulje').addEventListener('click', () => {
+      const IMP = window.IMP;
+      IMP.init('imp22446627'); // 가맹점 코드
+
+      const storedData = localStorage.getItem("orderData");
+      if (!storedData) {
+        alert("주문 정보가 없습니다.");
+        return;
+      }
+
+      const orderData = JSON.parse(storedData);
+
+      // 디버깅 로그 추가
+      console.log("🔥 orderData:", orderData);
+      
+      const sumPrice = parseInt(orderData.sumPrice || "0");
+      const usedPoint = parseInt(orderData.usedPoint || "0");
+      const amount = parseInt(orderData.sumPrice || "0"); // ✅ 수정
+      orderData.finalPrice = amount;
+      localStorage.setItem("orderData", JSON.stringify(orderData));
+
+      console.log("🔥 sumPrice 확인:", orderData.sumPrice, typeof orderData.sumPrice);
+
+      console.log("🔥 amount 최종값:", amount, typeof amount);
+
+      if (amount <= 0) {
+        alert("결제 금액이 0원이거나 잘못되었습니다.");
+        console.error("❌ 잘못된 금액:", amount, orderData);
+        return;
+      }
+
+      // 상품명 구성
+      let productName = "도서주문";
+      if (orderData.orderList && orderData.orderList.length > 0) {
+        const firstTitle = orderData.orderList[0].title;
+        const totalCount = orderData.orderList.length;
+        if (firstTitle && firstTitle.trim().length > 0) {
+          productName = totalCount > 1
+            ? `${firstTitle} 외 ${totalCount - 1}권`
+            : firstTitle;
+        }
+      }
+
+      const requestData = {
+        pg: 'kakaopay',
+        pay_method: 'card',
+        merchant_uid: `order_${new Date().getTime()}`,
+        name: productName,
+        amount: amount,
+        buyer_name: orderData.receiver,
+        buyer_addr: orderData.address
+      };
+
+      console.log("📦 requestData to IMP:", requestData);
+
+      IMP.request_pay(requestData, (response) => {
+        if (response.success) {
+          alert(`결제 완료! 결제금액: ${response.paid_amount}원`);
+          console.log('✅ 결제 성공:', response);
+
+          fetch("/dasibom/orderInsert.do", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(orderData)
+          })
+          .then(res => {
+            if (!res.ok) {
+              throw new Error("서버 응답 오류: " + res.status);
+            }
+            return res.json();
+          })
+          .then(data => {
+            console.log("서버 응답:", data);
+            if (data.result === "success") {
+            	const orderId = data.orderId;
+            	const finalUrl = `/dasibom/paymentComplete.do?orderId=${orderId}`;
+            	console.log("➡ 최종 이동 주소:", finalUrl);  // 👈 이거 추가
+            	window.location.href = finalUrl;
+            } else {
+              alert("서버 오류: " + JSON.stringify(data));
+            }
+          })
+          .catch(err => {
+            console.error("❌ JSON 처리 오류:", err);
+            alert("서버가 JSON을 반환하지 않았습니다.\n" + err);
+          });
+
+        } else {
+          alert(`결제 실패: ${response.error_msg}`);
+          console.error('❌ 결제 실패:', response);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

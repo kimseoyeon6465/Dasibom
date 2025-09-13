@@ -1,0 +1,123 @@
+@charset "UTF-8";
+
+	body {
+		font-family: Arial, sans-serif;
+		text-align: center;
+		margin: 20px;
+	}
+	
+	h1 {
+		text-align: left;
+		margin-left: 10px;
+	}
+	
+	table {
+		width: 70%; 	/* 겉에 제일큰 네모가로 줄이는 법 */
+		margin: 0 auto;
+		border-collapse: collapse;
+	}
+	
+	th, td {
+		border: 1px solid #ccc;
+		padding: 10px;
+		text-align: center;
+		vertical-align: top;
+	}
+	
+	.wishlist_item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+	
+	.wishlist_item img {
+		width: 120px;
+		height: auto;
+		margin-bottom: 10px;
+	}
+	
+	button {
+		padding: 10px 20px;
+		margin: 10px;
+		font-size: 16px;
+		background-color: #ffb6c1;
+		color: white;
+		border: none;
+		border-radius: 10px;
+		cursor: pointer;
+		transition: background-color 0.3s;
+	}
+	
+	button:hover {
+		background-color: #ff8fa3;
+	}
+	
+	/* 리스트형으로 한 줄에 책 한 개씩 */
+	.wishlist-row {
+	  display: flex;
+	  align-items: center;
+	  justify-content: space-between;
+	  gap: 10px;
+	  padding: 15px 200px;   /* ← 이 부분만 조절 */
+	  
+	  border: 1px solid #eee;
+	  border-radius: 8px;
+	  margin: 10px auto;
+	  max-width: 800px;
+	  background-color: #fff;
+	}
+	
+	/* 책 이미지 */
+	.wishlist-row img {
+	  width: 100px;
+	  height: auto;
+	  object-fit: cover;
+	  border-radius: 4px;
+	  box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+	}
+	
+	
+	/* 책 정보 */
+	.wishlist-info {
+	  flex: 1;
+	  text-align: left;
+	}
+	
+	.wishlist-info .book-title {
+	  font-size: 18px;
+	  font-weight: bold;
+	  margin-bottom: 4px;
+	}
+	
+	.wishlist-info .book-author {
+	  font-size: 14px;
+	  color: #666;
+	}
+	
+	/* 버튼 정렬 */
+	.wishlist-buttons {
+	  display: flex;
+	  flex-direction: column;
+	  gap: 8px;
+	}
+	
+	.wishlist-buttons button {
+	  width: 100px;
+	  padding: 8px 0;
+	  font-size: 14px;
+	  border: none;
+	  border-radius: 6px;
+	  cursor: pointer;
+	  color: white;
+	}
+	
+	/* 장바구니 → 회색 */
+	.wishlist-buttons button:first-child {
+	  background-color: #808080;
+	}
+	
+	/* 삭제 → 보라색 */
+	.wishlist-buttons button:last-child {
+	  background-color: #ec6792;
+	}
+	

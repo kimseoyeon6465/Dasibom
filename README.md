@@ -1,5 +1,8 @@
 프로젝트명: DasiBom
 
+🎥YouTube<br>
+https://www.youtube.com/watch?v=BgfCU3VaJDs
+
 프로젝트 개요
 중고 도서 및 굿즈 거래를 지원하는 웹 기반 전자상거래 서비스입니다.
 회원 기능, 장바구니, 주문·결제, 리뷰 기능을 포함한 전체 구매 흐름을 구현했습니다.

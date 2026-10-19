@@ -55,7 +55,7 @@ Java 11, Spring MVC 5.3, MyBatis, Oracle, JSP, JavaScript, jQuery, 포트원(구
 
 ## 실행 환경
 
-- Java 11, Maven, Tomcat 8.5
+- Java 11, Tomcat 8.5
 - Oracle (`root-context.xml`의 접속 정보를 로컬 DB에 맞게 수정, 기본값 `127.0.0.1:1521:xe`)
 - 카카오페이 결제는 포트원 테스트 모드 기준이며, 가맹점 식별코드는 본인 포트원 계정 값으로 교체가 필요합니다.
 - 테이블 생성 스크립트는 저장소에 포함하지 않았고, ERD 이미지를 참고해 구성합니다.

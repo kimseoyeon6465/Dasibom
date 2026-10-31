@@ -49,7 +49,7 @@ Java 11, Spring MVC 5.3, MyBatis, Oracle, JSP, JavaScript, jQuery, 포트원(구
 
 - 회원/비회원 주문, 결제, 주문 조회를 구현했고 테이블은 회원용 3개, 비회원용 3개로 분리했습니다.
 - 5명이 만든 기능을 병합 오류 없이 합쳐 완성했습니다. DB 담당으로 테이블 구조와 변수명 기준을 정리해 팀에 공유했습니다.
-- 서버에서 다시 검증하는 로직은 구현하지 못했습니다.
+- 서버에서 결제 금액을 다시 검증하는 로직은 구현하지 못했습니다.
 - 결제는 성공했지만 주문 저장이 실패한 경우의 처리는 구현하지 못했습니다.
 - 보완 계획: Naver Pay, Toss Pay 추가 / 취소, 환불까지 포함한 주문 상태 정의 / 비회원 본인 확인 강화
 
@@ -57,5 +57,5 @@ Java 11, Spring MVC 5.3, MyBatis, Oracle, JSP, JavaScript, jQuery, 포트원(구
 
 - Java 11, Tomcat 8.5
 - Oracle (`root-context.xml`의 접속 정보를 로컬 DB에 맞게 수정, 기본값 `127.0.0.1:1521:xe`)
-- 카카오페이 결제는 포트원 테스트 모드 기준이며, 가맹점 식별코드는 본인 포트원 계정 값으로 교체가 필요합니다.
-- 테이블 생성 스크립트는 저장소에 포함하지 않았고, ERD 이미지를 참고해 구성합니다.
+- 카카오페이 결제는 포트원 테스트 모드 기준입니다. `payment/kakaopay.html`과 `payment/kakaopayForGuest.html`의 `IMP.init` 값을 본인 포트원 계정의 가맹점 식별코드로 교체해야 합니다.
+- 도서 검색은 네이버 API를 사용합니다. 환경 변수 `NAVER_CLIENT_ID`, `NAVER_CLIENT_SECRET`에 본인 값을 설정해야 합니다.

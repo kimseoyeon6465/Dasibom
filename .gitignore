@@ -14,3 +14,5 @@
 # OS 자동 생성파일
 .DS_Store
 Thumbs.db
+
+target/

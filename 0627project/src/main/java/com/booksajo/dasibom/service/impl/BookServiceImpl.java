@@ -100,8 +100,8 @@ public class BookServiceImpl implements BookService {
 
 	@Override
 	public BookSearchResult searchBooks(String query, int startnum) {
-		String clientId = "k1JoyA9mKyzQfVoyHmUW";
-		String clientSecret = "liT0c_CuXU";
+		String clientId = System.getenv("NAVER_CLIENT_ID");
+String clientSecret = System.getenv("NAVER_CLIENT_SECRET");
 		ArrayList<BookVO> resultList = new ArrayList<BookVO>();
 		int total = 0;
 
